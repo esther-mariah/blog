@@ -1,8 +1,9 @@
 <?php
 require_once '../core/sql.php';
-$id=1;
+
+$id = 1;
 $nome = 'esther';
-$email = 'esther@gmail.com';
+$email = 'esther.mariah@aluno.ifsp.edu.br';
 $senha = '1234';
 $dados = [
     'nome' => $nome,
@@ -13,26 +14,34 @@ $dados = [
 $entidade = 'usuario';
 $criterio = [['id', '=', $id]];
 $campos = ['id', 'nome', 'email'];
-print_r ($dados);
-echo '<br>';
-print_r($campos);
-echo '<br>';
-print_r($criterio);
-echo '<br>';
 
-//teste geraçaõ insert
+print_r($dados);
+echo '  
+';
+print_r($campos);
+echo '  
+';
+print_r($criterio);
+echo '  
+';
+
+// Teste geração INSERT
 $instrucao = insert($entidade, $dados);
-echo $instrucao.'<BR>';
+echo $instrucao . '  
+';
 
 // Teste geração UPDATE
 $instrucao = update($entidade, $dados, $criterio);
-echo $instrucao.'<BR>';
+echo $instrucao . '  
+';
 
 // Teste geração SELECT
 $instrucao = select($entidade, $campos, $criterio);
-echo $instrucao.'<BR>';
+echo $instrucao . '  
+';
 
 // Teste geração DELETE
 $instrucao = delete($entidade, $criterio);
-echo $instrucao.'<BR>';
+echo $instrucao . '  
+';
 ?>

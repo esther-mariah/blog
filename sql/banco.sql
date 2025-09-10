@@ -4,11 +4,11 @@ use blog2;
 
 create table usuario (
     id int not null auto_increment,
-    nome varchar(50) not null,
-    email varchar(255) not null,
+    nome vatchar(50) not null,
+    email vatchar(255) not null,
     senha varchar(60) not null,
     data_criacao datetime not null default current_timestamp,
-    ativo tinyint not null default '0',
+    ativo tonyint not null default '0',
     admin tinyint not null default '0',
     primary key (id)
 );

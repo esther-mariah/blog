@@ -1,11 +1,11 @@
 <?php
+
 function insert(string $entidade, array $dados) : string
 {
     $instrucao = "INSERT INTO {$entidade}";
 
     $campos = implode(', ', array_keys($dados));
-    // Cria a mesma quantidade de coringas que os campos
-    $valores = implode(', ', array_fill(0, count($dados), '?'));
+    $valores = implode(', ', array_values($dados));
 
     $instrucao .= " ({$campos})";
     $instrucao .= " VALUES ({$valores})";
@@ -21,7 +21,7 @@ function update(string $entidade, array $dados, array $criterio = []) : string
         $set[] = "{$campo} = {$dado}";
     }
 
-    $instrucao .= ' SET ' . implode(', ', $set) ;
+    $instrucao .= ' SET ' . implode(', ', $set);
 
     if(!empty($criterio)){
         $instrucao .= ' WHERE ';
@@ -33,7 +33,6 @@ function update(string $entidade, array $dados, array $criterio = []) : string
 
     return $instrucao;
 }
-
 
 function delete(string $entidade, array $criterio = []) : string
 {
@@ -50,7 +49,6 @@ function delete(string $entidade, array $criterio = []) : string
     return $instrucao;
 }
 
-
 function select(string $entidade, array $campos, array $criterio = [], string $ordem = null) : string
 {
     $instrucao = "SELECT " . implode(', ', $campos);
@@ -65,9 +63,10 @@ function select(string $entidade, array $campos, array $criterio = [], string $o
     }
 
     if(!empty($ordem)){
-        $instrucao .= " ORDER BY $ordem ";
+        $instrucao .= " ORDER BY {$ordem} ";
     }
 
     return $instrucao;
 }
+
 ?>
