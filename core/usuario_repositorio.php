@@ -123,7 +123,4 @@ case 'update':
         break;
     }
     header('Location: ../index.php');
-    ?>
-    
-
 ?>
