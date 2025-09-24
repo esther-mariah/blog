@@ -46,7 +46,7 @@
                 <h2>Usuario</h2>
                 <form method="post" action="core/usuario_repositorio.php">
                     <input type="hidden" name="acao"
-                            value="<?php echo empty($id) ? 'inserir' : 'update'; ?>">
+                            value="<?php echo empty($id) ? 'insert' : 'update'; ?>">
                     <input type="hidden" name="id"
                             value="<?php echo $entidade['id'] ?? ''; ?>">
                     <div class="form-group">
