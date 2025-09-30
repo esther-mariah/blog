@@ -14,7 +14,7 @@
     </div>
 
     <!-- Menu -->
-    <div class="row" style="min-height: 500px;">
+    <div class="row" style="min-height: 52px;">
         <div class="col-md-12">
             <?php include 'includes/menu.php'; ?>
         </div>
@@ -25,6 +25,7 @@
         <h2>Página Inicial</h2>
 
         <?php
+        date_default_timezone_set('America/Sao_Paulo');
         // ==== INCLUDES CORE ====
         require_once 'includes/funcoes.php';
         require_once 'core/conexao_mysql.php';
@@ -36,8 +37,8 @@
             $$indice = limparDados($dado);
         }
 
-        $data_atual = date('Y/m/d H:i:s');
-
+        $data_atual = date('Y-m-d H:i:s');
+        print_r($data_atual);
         $criterio = [
             ['data_postagem', '<=', $data_atual]
         ];
@@ -70,6 +71,7 @@
         <div>
             <div class="list-group">
                 <?php foreach($posts as $post): 
+                if(strtotime($post['data_postagem']) <= strtotime($data_atual)) {
                     $data = date_create($post['data_postagem']);
                     $data = date_format($data, 'd/m/Y H:i:s');
                 ?>
@@ -79,7 +81,10 @@
                         [<?php echo $post['nome']?>]
                         <span class="badge badge-dark"><?php echo $data?></span>
                     </a>
-                <?php endforeach; ?>
+                <?php 
+                }
+                    endforeach; 
+                ?>
             </div>
         </div>
     </div>
