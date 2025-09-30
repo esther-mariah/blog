@@ -14,7 +14,7 @@
     </div>
 
     <!-- Menu -->
-    <div class="row" style="min-height: 50px;">
+    <div class="row" style="min-height: 500px;">
         <div class="col-md-12">
             <?php include 'includes/menu.php'; ?>
         </div>
@@ -25,17 +25,18 @@
         <h2>Página Inicial</h2>
 
         <?php
+        // ==== INCLUDES CORE ====
         require_once 'includes/funcoes.php';
         require_once 'core/conexao_mysql.php';
         require_once 'core/sql.php';
         require_once 'core/mysql.php';
 
-        // ==== busca e filtros ====
+        // ==== BUSCA E FILTRO ====
         foreach($_GET as $indice => $dado){
             $$indice = limparDados($dado);
         }
 
-        $data_atual = date('Y-m-d H:i:s');
+        $data_atual = date('Y/m/d H:i:s');
 
         $criterio = [
             ['data_postagem', '<=', $data_atual]
@@ -65,7 +66,7 @@
         );
         ?>
 
-        <!-- Lista posts -->
+        <!-- Listagem de posts -->
         <div>
             <div class="list-group">
                 <?php foreach($posts as $post): 
