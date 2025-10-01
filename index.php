@@ -38,10 +38,11 @@
         }
 
         $data_atual = date('Y-m-d H:i:s');
-        print_r($data_atual);
         $criterio = [
             ['data_postagem', '<=', $data_atual]
         ];
+
+        include 'includes/busca.php';
 
         if(!empty($busca)) {
             $criterio[] = [
